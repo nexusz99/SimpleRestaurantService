@@ -1,4 +1,4 @@
 SimpleRestaurantService
 =======================
 
-This Project is implement simple restaurant service using file based message queue.
+이 프로젝트는 파일기반 메세지큐를 이용한 간단한 레스토랑 서비스 시뮬레이터입니다.
