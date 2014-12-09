@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RestaurantService", "RestaurantService\RestaurantService.vcxproj", "{54531DB2-672C-440D-AB1F-03DF9B192BF7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RestaurantClient", "RestaurantClient\RestaurantClient.vcxproj", "{A9516C09-E3BE-4FA8-B811-E198598120EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{54531DB2-672C-440D-AB1F-03DF9B192BF7}.Debug|Win32.Build.0 = Debug|Win32
 		{54531DB2-672C-440D-AB1F-03DF9B192BF7}.Release|Win32.ActiveCfg = Release|Win32
 		{54531DB2-672C-440D-AB1F-03DF9B192BF7}.Release|Win32.Build.0 = Release|Win32
+		{A9516C09-E3BE-4FA8-B811-E198598120EB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A9516C09-E3BE-4FA8-B811-E198598120EB}.Debug|Win32.Build.0 = Debug|Win32
+		{A9516C09-E3BE-4FA8-B811-E198598120EB}.Release|Win32.ActiveCfg = Release|Win32
+		{A9516C09-E3BE-4FA8-B811-E198598120EB}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

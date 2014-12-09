@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{54531DB2-672C-440D-AB1F-03DF9B192BF7}</ProjectGuid>
+    <ProjectGuid>{A9516C09-E3BE-4FA8-B811-E198598120EB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>RestaurantService</RootNamespace>
+    <RootNamespace>RestaurantClient</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -54,7 +54,6 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ConsoleLogger_Debug.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -72,52 +71,23 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ConsoleLogger_Release.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleManager.cpp" />
-    <ClCompile Include="DataSet\OrderQueue.cpp" />
-    <ClCompile Include="Json.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MessageQueue.cpp" />
-    <ClCompile Include="PostOffice.cpp" />
-    <ClCompile Include="RequestWorker.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="ConsoleLogger.h" />
-    <ClInclude Include="DataSet\MessageQueueData.h" />
-    <ClInclude Include="DataSet\OrderQueue.h" />
-    <ClInclude Include="Json.h" />
-    <ClInclude Include="MessageQueue.h" />
-    <ClInclude Include="PostOffice.h" />
-    <ClInclude Include="RequestWorker.h" />
     <ClInclude Include="rapidjson\allocators.h" />
     <ClInclude Include="rapidjson\document.h" />
     <ClInclude Include="rapidjson\encodedstream.h" />
     <ClInclude Include="rapidjson\encodings.h" />
-    <ClInclude Include="rapidjson\error\en.h" />
-    <ClInclude Include="rapidjson\error\error.h" />
     <ClInclude Include="rapidjson\filereadstream.h" />
     <ClInclude Include="rapidjson\filestream.h" />
     <ClInclude Include="rapidjson\filewritestream.h" />
-    <ClInclude Include="rapidjson\internal\dtoa.h" />
-    <ClInclude Include="rapidjson\internal\itoa.h" />
-    <ClInclude Include="rapidjson\internal\meta.h" />
-    <ClInclude Include="rapidjson\internal\pow10.h" />
-    <ClInclude Include="rapidjson\internal\stack.h" />
-    <ClInclude Include="rapidjson\internal\strfunc.h" />
     <ClInclude Include="rapidjson\memorybuffer.h" />
     <ClInclude Include="rapidjson\memorystream.h" />
-    <ClInclude Include="rapidjson\msinttypes\inttypes.h" />
-    <ClInclude Include="rapidjson\msinttypes\stdint.h" />
     <ClInclude Include="rapidjson\prettywriter.h" />
     <ClInclude Include="rapidjson\rapidjson.h" />
     <ClInclude Include="rapidjson\reader.h" />
     <ClInclude Include="rapidjson\stringbuffer.h" />
     <ClInclude Include="rapidjson\writer.h" />
-    <ClInclude Include="Serializable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
