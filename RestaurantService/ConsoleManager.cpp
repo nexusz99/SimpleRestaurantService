@@ -47,6 +47,7 @@ DWORD WINAPI monitorOrder(LPVOID lpParameter)
 {
 	while(true)
 	{
+		
 		orderConsole.printf("----------------\n");
 		orderConsole.printf("실시간 주문 현황\n");
 		orderConsole.printf("----------------\n\n");
@@ -59,7 +60,7 @@ DWORD WINAPI monitorOrder(LPVOID lpParameter)
 			orderConsole.cls();
 			continue;
 		}
-
+		
 		OrderData* od = (OrderData*)d->data;
 		orderConsole.printf("|   고객  |    매뉴    |  수량  |\n");
 		orderConsole.printf("%s       ", d->client_id.c_str());
@@ -70,7 +71,7 @@ DWORD WINAPI monitorOrder(LPVOID lpParameter)
 
 
 		oq->print();
-		Sleep(100);
+		Sleep(400);
 		orderConsole.cls();
 	}
 }
@@ -82,8 +83,10 @@ DWORD WINAPI monitorPay(LPVOID lpParameter)
 		monitorConsole.cls();
 		monitorConsole.printf("----- 실시간 결제 내역 -----\n");
 		monitorConsole.printf("고객명          |    매뉴    |   지불 금액   |\n");
+		
 		LinkedList<PayData*> l;
 		l = rm.payList;
+		
 		if(l.getCount()==0)
 		{
 			Sleep(1000);
