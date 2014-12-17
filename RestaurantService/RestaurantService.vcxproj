@@ -49,7 +49,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -77,19 +77,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleManager.cpp" />
+    <ClCompile Include="DataSet\BigInt.cpp" />
     <ClCompile Include="DataSet\OrderQueue.cpp" />
     <ClCompile Include="Json.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="md5.cpp" />
     <ClCompile Include="MessageQueue.cpp" />
     <ClCompile Include="PostOffice.cpp" />
     <ClCompile Include="RequestWorker.cpp" />
+    <ClCompile Include="RestraurantManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="DataSet\BigInt.h" />
+    <ClInclude Include="DataSet\HashTable.h" />
+    <ClInclude Include="DataSet\LinkedList.h" />
+    <ClInclude Include="DataSet\MenuData.h" />
     <ClInclude Include="DataSet\MessageQueueData.h" />
     <ClInclude Include="DataSet\OrderQueue.h" />
+    <ClInclude Include="DataSet\PayData.h" />
+    <ClInclude Include="DataSet\UserData.h" />
     <ClInclude Include="Json.h" />
+    <ClInclude Include="md5.h" />
     <ClInclude Include="MessageQueue.h" />
     <ClInclude Include="PostOffice.h" />
     <ClInclude Include="RequestWorker.h" />
@@ -117,6 +127,7 @@
     <ClInclude Include="rapidjson\reader.h" />
     <ClInclude Include="rapidjson\stringbuffer.h" />
     <ClInclude Include="rapidjson\writer.h" />
+    <ClInclude Include="RestraurantManager.h" />
     <ClInclude Include="Serializable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

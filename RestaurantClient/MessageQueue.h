@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-#include "DataSet\MessageQueueData.h"
-#include "Config.h"
-#include "Json.h"
+#include "../RestaurantService/DataSet/MessageQueueData.h"
+#include "../RestaurantService/Config.h"
+#include "../RestaurantService/Json.h"
 
 #include <Shlwapi.h>
 #include <fstream>
@@ -25,4 +25,5 @@ private:
 public:
 	static MessageQueue* getInstance();
 	MessageQueueData* Dequeue();
+	void Enqueue(MessageQueueData d);
 };

@@ -52,6 +52,7 @@ MessageQueueData* MessageQueue::Dequeue()
 
 bool MessageQueue::isUsable()
 {
+	Sleep(400);
 	if(PathFileExistsA(MESSAGE_QUEUE_LOCK))
 	{
 		return false;
@@ -78,4 +79,30 @@ bool MessageQueue::isEmpty(ifstream& in)
 	if(size == 0)
 		return true;
 	return false;
+}
+
+void MessageQueue::Enqueue(MessageQueueData d)
+{
+	while(!isUsable())
+	{
+		Sleep(1000);
+	}
+
+	lockFile();
+
+	Json j;
+	string str= j.serialize((Serializable&)d);
+
+	ofstream o(MESSAGE_QUEUE, ios::app);
+
+	o.seekp(0, ifstream::end);
+	int size = o.tellp();
+	if(size != 0)
+		o << endl;
+	
+	o.seekp(0, ifstream::end);
+	
+	o << str;
+	o.close();
+	unLockFile();
 }

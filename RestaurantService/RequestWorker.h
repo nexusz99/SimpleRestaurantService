@@ -3,20 +3,21 @@
 #include "MessageQueue.h"
 #include "DataSet\OrderQueue.h"
 
-#define WAIT_TIME 500
+#define WAIT_TIME 300
 
 class RequestWorker
 {
 public:	
 	MessageQueue* msgQueue;
-	OrderQueue *orderQueue;
-
-	RequestWorker(OrderQueue *oq);
+	RequestWorker();	
 	void start();
-	bool cancelOrder(OrderData *data);
 	void sendMessageToClient();
+	void order(MessageQueueData* data);
+	void cancelOrder(MessageQueueData* data);
+	void pay(MessageQueueData* data);
+	void login(MessageQueueData* data);
+	void signup(MessageQueueData* data);
 
 private:
-	RequestWorker();
 };
 

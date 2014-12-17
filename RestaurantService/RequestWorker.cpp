@@ -2,16 +2,15 @@
 
 #include "RequestWorker.h"
 #include "PostOffice.h"
+#include "RestraurantManager.h"
+#include "DataSet\PayData.h"
+
+extern RestraurantManager rm;
+extern OrderQueue* oq;
 
 RequestWorker::RequestWorker()
 {
-	// Do Nothing
-}
-
-RequestWorker::RequestWorker(OrderQueue *oq)
-{
 	msgQueue = MessageQueue::getInstance();
-	this->orderQueue = oq;
 }
 
 DWORD WINAPI work(LPVOID lpParameter)
@@ -29,30 +28,19 @@ DWORD WINAPI work(LPVOID lpParameter)
 		switch(data->msgType)
 		{
 		case ORDER:
-			ptr->orderQueue->Enqueue((OrderData *)(data->data));
+			ptr->order(data);
 			break;
 		case CANCEL_ORDER:
-			{
-				bool isCanceled = ptr->cancelOrder((OrderData *)(data->data));
-				//Generate Message
-				string msg = "";
-				Json json;
-				CancelOrderMsg comsg;
-				comsg.result = isCanceled;
-				comsg.msg = isCanceled ? "주문이 취소되었습니다." : "이미 조리중입니다";
-				msg = json.serialize((Serializable&)comsg);
-
-				// Deligate send message to PostOffice
-				PostOffice officer;
-				Letter l;
-				l.client_id = data->client_id;
-				l.msg = msg;
-				officer.sendMessage(l);
-			}
+			ptr->cancelOrder(data);
 			break;
 		case PAY:
+			ptr->pay(data);
 			break;
 		case LOGIN:
+			ptr->login(data);
+			break;
+		case SIGNUP:
+			ptr->signup(data);
 			break;
 		}
 
@@ -66,7 +54,69 @@ void RequestWorker::start()
 	CreateThread(NULL, 0, work, this, 0, 0);	
 }
 
-bool RequestWorker::cancelOrder(OrderData *data)
+void RequestWorker::cancelOrder(MessageQueueData* data)
+{	
+	bool isCanceled = oq->DeleteItem(data);
+	//Generate Message
+	string msg = "";
+	Json json;
+	CancelOrderMsg comsg;
+	comsg.result = isCanceled;
+	comsg.msg = isCanceled ? "주문이 취소되었습니다." : "이미 조리중입니다";
+	msg = json.serialize((Serializable&)comsg);
+
+	// Deligate send message to PostOffice
+	PostOffice officer;
+	Letter l;
+	l.client_id = data->client_id;
+	l.msg = msg;
+	officer.sendMessage(l);
+}
+
+void RequestWorker::order(MessageQueueData* data)
 {
-	return false;
+	oq->Enqueue(data);
+}
+
+void RequestWorker::pay(MessageQueueData* data)
+{
+	PayRequest *p = (PayRequest*)data->data;
+	PayData *pd = new PayData();
+	pd->username = data->client_id;
+	pd->amount = p->amount;
+	pd->cash = p->cost;
+	pd->item = rm.getItemNameById(p->itemno);
+
+	rm.writePaymentInfo(pd);
+}
+
+void RequestWorker::login(MessageQueueData* data)
+{
+	User* u = (User*)(data->data);
+	bool valid = rm.verifyLogin(u->username, u->password);
+
+	PostOffice officer;
+	Letter l;
+	l.client_id = data->client_id;
+	l.msg = valid ? "1" : "0";
+	officer.sendMessage(l);
+}
+
+void RequestWorker::signup(MessageQueueData* data)
+{
+	User* u = (User*)(data->data);
+
+	PostOffice officer;
+	Letter l;
+	l.client_id = u->username;
+	if(rm.createNewUser(u->username, u->password))
+	{
+		l.msg = "1";
+		
+	}
+	else
+	{
+		l.msg = "0";
+	}
+	officer.sendMessage(l);
 }

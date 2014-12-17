@@ -4,7 +4,7 @@
 
 #include <string>
 
-enum MessageType{ORDER, CANCEL_ORDER, PAY, LOGIN};
+enum MessageType{ORDER, CANCEL_ORDER, PAY, LOGIN, SIGNUP};
 
 using namespace std;
 
@@ -16,7 +16,7 @@ public:
 	}
 };
 
-class Login: Data
+class User: Data
 {
 public:
 	string username;
@@ -29,6 +29,7 @@ public:
 		writer.String(username.c_str());
 		writer.String("password");
 		writer.String(password.c_str());
+		writer.EndObject();
 	}
 };
 
@@ -45,6 +46,26 @@ public:
 		writer.Int(itemNo);
 		writer.String("amount");
 		writer.Int(amount);
+		writer.EndObject();
+	}
+};
+
+class PayRequest:Data
+{
+public:
+	int itemno;
+	int amount;
+	int cost;
+
+	void Serialize(PrettyWriter<StringBuffer>& writer) const
+	{
+		writer.StartObject();
+		writer.String("itemno");
+		writer.Int(itemno);
+		writer.String("amount");
+		writer.Int(amount);
+		writer.String("cost");
+		writer.Int(cost);
 		writer.EndObject();
 	}
 };

@@ -60,6 +60,15 @@
     <ClCompile Include="PostOffice.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSet\BigInt.cpp">
+      <Filter>소스 파일\DataSet</Filter>
+    </ClCompile>
+    <ClCompile Include="RestraurantManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h">
@@ -160,6 +169,30 @@
     </ClInclude>
     <ClInclude Include="Serializable.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RestraurantManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSet\UserData.h">
+      <Filter>헤더 파일\DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSet\BigInt.h">
+      <Filter>헤더 파일\DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSet\PayData.h">
+      <Filter>헤더 파일\DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSet\HashTable.h">
+      <Filter>헤더 파일\DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSet\LinkedList.h">
+      <Filter>헤더 파일\DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSet\MenuData.h">
+      <Filter>헤더 파일\DataSet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
